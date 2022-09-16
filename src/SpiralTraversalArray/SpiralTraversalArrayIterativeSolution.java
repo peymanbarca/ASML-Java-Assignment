@@ -1,14 +1,15 @@
 package SpiralTraversalArray;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by zevik on 9/16/22.
  */
 public class SpiralTraversalArrayIterativeSolution {
 
-    //  print in spiral order
-    public static List<Integer> printInSpiralOrder(int[][] array) {
+    // function for give the spiral order of input array
+    private static List<Integer> printInSpiralOrder(int[][] array) {
 
         List<Integer> answer = new ArrayList<Integer>();
 
@@ -56,6 +57,7 @@ public class SpiralTraversalArrayIterativeSolution {
                 { 13, 14, 15, 16 }
         };
 
-        System.out.println(" \n The spiral presentation of the input array is as follows : \n\n" + printInSpiralOrder(sampleArray));
+        System.out.println(" \n The spiral presentation of the input array is as follows : \n" +
+                printInSpiralOrder(sampleArray).stream().map(Object::toString).collect(Collectors.joining(",")));
     }
 }
