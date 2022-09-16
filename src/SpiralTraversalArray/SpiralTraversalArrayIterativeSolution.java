@@ -9,13 +9,13 @@ import java.util.stream.Collectors;
 public class SpiralTraversalArrayIterativeSolution {
 
     // function for give the spiral order of input array
-    private static List<Integer> printInSpiralOrder(int[][] array) {
+    public static String printInSpiralOrder(int[][] array) {
 
         List<Integer> answer = new ArrayList<Integer>();
 
         // special case
-        if (array.length == 0)
-            return answer;
+        if (array==null || array.length == 0)
+            return "";
 
         // find number of rows & columns
         int M = array.length, N = array[0].length;
@@ -45,7 +45,7 @@ public class SpiralTraversalArrayIterativeSolution {
                 y += directionInColumns[directionIndex];
             }
         }
-        return answer;
+        return answer.stream().map(Object::toString).collect(Collectors.joining(","));
     }
 
     public static void main(String[] args) {
@@ -58,6 +58,7 @@ public class SpiralTraversalArrayIterativeSolution {
         };
 
         System.out.println(" \n The spiral presentation of the input array is as follows : \n" +
-                printInSpiralOrder(sampleArray).stream().map(Object::toString).collect(Collectors.joining(",")));
+                printInSpiralOrder(sampleArray));
+
     }
 }

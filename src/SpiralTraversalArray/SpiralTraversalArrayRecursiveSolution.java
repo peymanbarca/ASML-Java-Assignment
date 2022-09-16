@@ -7,7 +7,7 @@ public class SpiralTraversalArrayRecursiveSolution {
 
 
     // function for print spiral order of the input matrix
-    private static void printInSpiralOrder(int arr[][], int x, int y, int M, int N)
+    public static void printInSpiralOrder(int arr[][], int x, int y, int M, int N)
     {
 
 
