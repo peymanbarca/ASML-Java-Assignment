@@ -13,7 +13,7 @@ public class SpiralTraversalArrayIterativeSolution {
 
         List<Integer> answer = new ArrayList<Integer>();
 
-        // special case
+        // special cases
         if (array==null || array.length == 0)
             return "";
 
