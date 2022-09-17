@@ -2,11 +2,9 @@ package test;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static SpiralTraversalArray.SpiralTraversalArrayIterativeSolution.printInSpiralOrder;
+import static SpiralTraversalArray.SpiralTraversalArrayIterativeSolution.printInSpiralOrderIterativeApproach;
 import static org.junit.Assert.assertEquals;
+import static test.TestUtilities.*;
 
 /**
  * Created by zevik on 9/16/22.
@@ -14,17 +12,15 @@ import static org.junit.Assert.assertEquals;
 public class SpiralTraversalArrayIterativeTest {
 
 
-    private String normalizeStringOfArray(int[][] array) {
-        return Arrays.deepToString(array).replace("[[","").replace("]]","").replace("[","").replace("]","").replace(", ",",");
-    }
 
-    private String createStringAsNTimesOfNumber(int numTimes, int number) {
-        StringBuilder result = new StringBuilder();
-        for (int i = 1; i < numTimes; i++) {
-            result.append(number).append(",");
-        }
-        result.append(number);
-        return result.toString();
+
+    //  create assert function in order to adhere to DRY
+    private void assertTestCaseIsPassed(int[][] array, String expectedPrint) {
+
+        String result = printInSpiralOrderIterativeApproach(array);
+
+        assertEquals(expectedPrint,
+                result);
     }
 
     @Test
@@ -38,10 +34,7 @@ public class SpiralTraversalArrayIterativeTest {
                 { 13, 14, 15, 16 }
         };
 
-        String result = printInSpiralOrder(sampleArray);
-
-        assertEquals("1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10",
-                result);
+        assertTestCaseIsPassed(sampleArray, "1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10");
 
     }
 
@@ -57,10 +50,7 @@ public class SpiralTraversalArrayIterativeTest {
                 { 10, 2222, 12 }
         };
 
-        String result = printInSpiralOrder(sampleArray);
-
-        assertEquals("1,2,3,6,9,12,2222,10,7,4,22,222",
-                result);
+        assertTestCaseIsPassed(sampleArray, "1,2,3,6,9,12,2222,10,7,4,22,222");
 
     }
 
@@ -68,18 +58,9 @@ public class SpiralTraversalArrayIterativeTest {
     public void testSpiralPrintCase3() {
 
         int rows=6,columns=6;
-        int sampleArray[][] = new int[rows][rows];
+        int sampleArray[][] = create2DArray(rows, columns);
 
-        for (int i=0;i<rows;i++){
-            for (int j=0;j<columns;j++) {
-                sampleArray[i][j] = i+j+1;
-            }
-        }
-
-        String result = printInSpiralOrder(sampleArray);
-
-        assertEquals("1,2,3,4,5,6,7,8,9,10,11,10,9,8,7,6,5,4,3,2,3,4,5,6,7,8,9,8,7,6,5,4,5,6,7,6",
-                result);
+        assertTestCaseIsPassed(sampleArray, "1,2,3,4,5,6,7,8,9,10,11,10,9,8,7,6,5,4,3,2,3,4,5,6,7,8,9,8,7,6,5,4,5,6,7,6");
 
     }
 
@@ -88,18 +69,9 @@ public class SpiralTraversalArrayIterativeTest {
     public void testSpiralPrintCase4() {
 
         int rows=6,columns=6;
-        int sampleArray[][] = new int[rows][columns];
+        int sampleArray[][] = create2DArray(rows, columns);
 
-        for (int i=0;i<rows;i++){
-            for (int j=0;j<columns;j++) {
-                sampleArray[i][j] = i+j+1;
-            }
-        }
-
-        String result = printInSpiralOrder(sampleArray);
-
-        assertEquals(normalizeStringOfArray(sampleArray),
-                result);
+        assertTestCaseIsPassed(sampleArray, normalizeStringOfArray(sampleArray));
 
     }
 
@@ -109,18 +81,9 @@ public class SpiralTraversalArrayIterativeTest {
 
 
         int rows=4,columns=6;
-        int sampleArray[][] = new int[rows][columns];
+        int sampleArray[][] = create2DArray(rows, columns);
 
-        for (int i=0;i<rows;i++){
-            for (int j=0;j<columns;j++) {
-                sampleArray[i][j] = i+j+1;
-            }
-        }
-
-        String result = printInSpiralOrder(sampleArray);
-
-        assertEquals("1,2,3,4,5,6,7,8,9,8,7,6,5,4,3,2,3,4,5,6,7,6,5,4",
-                result);
+        assertTestCaseIsPassed(sampleArray, "1,2,3,4,5,6,7,8,9,8,7,6,5,4,3,2,3,4,5,6,7,6,5,4");
 
     }
 
@@ -132,11 +95,7 @@ public class SpiralTraversalArrayIterativeTest {
 
         int sampleArray[][] = new int[][]{};
 
-
-        String result = printInSpiralOrder(sampleArray);
-
-        assertEquals("",
-                result);
+        assertTestCaseIsPassed(sampleArray, "");
 
     }
 
@@ -147,11 +106,7 @@ public class SpiralTraversalArrayIterativeTest {
 
         int sampleArray[][] = null;
 
-
-        String result = printInSpiralOrder(sampleArray);
-
-        assertEquals("",
-                result);
+        assertTestCaseIsPassed(sampleArray, "");
 
     }
 
@@ -163,18 +118,10 @@ public class SpiralTraversalArrayIterativeTest {
         int rows=8,columns=12;
         int desiredElementsValue = 3;
 
-        int sampleArray[][] = new int[rows][columns];
+        int sampleArray[][] = create2DArrayWithSameElements(rows, columns, 3);
 
-        for (int i=0;i<rows;i++){
-            for (int j=0;j<columns;j++) {
-                sampleArray[i][j] = desiredElementsValue;
-            }
-        }
 
-        String result = printInSpiralOrder(sampleArray);
-
-        assertEquals(createStringAsNTimesOfNumber(rows*columns, desiredElementsValue),
-                result);
+        assertTestCaseIsPassed(sampleArray, createStringByNTimesOfNumber(rows*columns, desiredElementsValue));
 
     }
 }

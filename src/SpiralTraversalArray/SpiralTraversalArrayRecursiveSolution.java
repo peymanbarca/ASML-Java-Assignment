@@ -7,7 +7,7 @@ public class SpiralTraversalArrayRecursiveSolution {
 
 
     // recursive function for print spiral order of the input array
-    public static void printInSpiralOrder(int array[][], int x, int y, int M, int N)
+    public static void printInSpiralOrderRecursiveApproach(int array[][], int x, int y, int M, int N)
     {
 
 
@@ -47,7 +47,7 @@ public class SpiralTraversalArrayRecursiveSolution {
         }
 
         // Call recursively (with next position and decreased rows and columns
-        printInSpiralOrder(array, x + 1, y + 1, M - 1, N - 1);
+        printInSpiralOrderRecursiveApproach(array, x + 1, y + 1, M - 1, N - 1);
     }
 
     public static void main(String[] args)
@@ -62,6 +62,6 @@ public class SpiralTraversalArrayRecursiveSolution {
 
         int M = sampleArray.length, N = sampleArray[0].length;
         System.out.println(" \n The spiral presentation of the input array is as follows : ");
-        printInSpiralOrder(sampleArray, 0, 0, M, N);
+        printInSpiralOrderRecursiveApproach(sampleArray, 0, 0, M, N);
     }
 }

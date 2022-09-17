@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class SpiralTraversalArrayIterativeSolution {
 
     // function for give the spiral order of input array
-    public static String printInSpiralOrder(int[][] array) {
+    public static String printInSpiralOrderIterativeApproach(int[][] array) {
 
         List<Integer> answer = new ArrayList<Integer>();
 
@@ -58,7 +58,7 @@ public class SpiralTraversalArrayIterativeSolution {
         };
 
         System.out.println(" \n The spiral presentation of the input array is as follows : \n" +
-                printInSpiralOrder(sampleArray));
+                printInSpiralOrderIterativeApproach(sampleArray));
 
     }
 }
