@@ -1,7 +1,4 @@
-package inOutTraversal;
-
-import java.util.ArrayList;
-import java.util.List;
+package LiveCodeChallenge;
 
 /**
  * Created by zevik on 9/21/22.

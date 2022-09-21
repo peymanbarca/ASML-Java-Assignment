@@ -7,14 +7,13 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static inOutTraversal.Solution.recursiveApproach;
+import static LiveCodeChallenge.Solution.recursiveApproach;
 import static org.junit.Assert.assertEquals;
-import static test.TestUtilities.*;
 
 /**
  * Created by zevik on 9/16/22.
  */
-public class InOutTraversalArrayRecursiveTest {
+public class LiveCodeChallengeTest {
 
 
     //  create assert function in order to adhere to DRY
